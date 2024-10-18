@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-3">Your Carb Cycling Data</h1>
+        <p class="text-muted lead">Personalized nutrition strategy based on your training schedule</p>
+    </div>
+
+    {% if data %}
+        <div class="row gy-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm stat-card">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary bg-opacity-10 mx-auto">
+                            <i class="fas fa-fire text-primary fa-lg"></i>
+                        </div>
+                        <h5 class="card-title text-muted">Average Daily Calories</h5>
+                        <h2 class="mb-0">{{ data.calorie_intake }} <small class="text-muted">kcal</small></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm stat-card">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-success bg-opacity-10 mx-auto">
+                            <i class="fas fa-dumbbell text-success fa-lg"></i>
+                        </div>
+                        <h5 class="card-title text-muted">Protein Intake</h5>
+                        <h2 class="mb-0">{{ data.protein_intake }} <small class="text-muted">g</small></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm stat-card">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-info bg-opacity-10 mx-auto">
+                            <i class="fas fa-calendar-alt text-info fa-lg"></i>
+                        </div>
+                        <h5 class="card-title text-muted">Total Training Days</h5>
+                        <h2 class="mb-0">{{ data.high_carb_days + data.normal_carb_days + data.low_carb_days }} <small class="text-muted">days</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Low Carb Days</h4>
+                            <span class="badge bg-light text-primary">{{ data.low_carb_days }} days</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Calories</span>
+                                <strong>{{ low_cal }} kcal</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Fat</span>
+                                <strong>{{ low_fat }}g</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Carbs</span>
+                                <strong>{{ low_cho }}g</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Normal Carb Days</h4>
+                            <span class="badge bg-light text-success">{{ data.normal_carb_days }} days</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Calories</span>
+                                <strong>{{ average_cal }} kcal</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Fat</span>
+                                <strong>{{ average_fat }}g</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Carbs</span>
+                                <strong>{{ average_cho }}g</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">High Carb Days</h4>
+                            <span class="badge bg-light text-danger">{{ data.high_carb_days }} days</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Calories</span>
+                                <strong>{{ high_cal }} kcal</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Fat</span>
+                                <strong>{{ high_fat }}g</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Carbs</span>
+                                <strong>{{ high_cho }}g</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <div class="mb-4">
+                <i class="fas fa-clipboard-list fa-4x text-muted mb-4"></i>
+                <h3>No Data Available</h3>
+                <p class="text-muted">You have not entered any carb cycling data yet.</p>
+            </div>
+            <a href="{{ url_for('views.home') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus-circle me-2"></i>Enter your data
+            </a>
+        </div>
+    {% endif %}
+</div>
+<style>
+    .container {
+        margin-top: -2rem !important;
+    }
+</style>
+{% endblock %}

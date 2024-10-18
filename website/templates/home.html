@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %}Home{% endblock title %}
+{% block content %}
+<h1>Home page</h1>
+<p>Input data about you in order to calculate what would be a good Carb Cycling for you</p>
+
+<div class="container">
+    <form method="POST" action="{{url_for('views.home')}}">
+        <div class="mb-3">
+            <label for="proteinIntake" class="form-label">Protein Intake (g)</label>
+            <input type="number" class="form-control" id="proteinIntake" name="protein_intake" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="calorieIntake" class="form-label">Calorie Intake (kcal)</label>
+            <input type="number" class="form-control" id="calorieIntake" name="calorie_intake" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="highCarbDays" class="form-label">High Carb Days (Harder trainings)</label>
+            <input type="number" class="form-control" id="highCarbDays" name="high_carb_days" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="normalCarbDays" class="form-label">Normal Carb Days (Normal trainings)</label>
+            <input type="number" class="form-control" id="normalCarbDays" name="normal_carb_days" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lowCarbDays" class="form-label">Low Carb Days (Rest day or cardio)</label>
+            <input type="number" class="form-control" id="lowCarbDays" name="low_carb_days" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
+
