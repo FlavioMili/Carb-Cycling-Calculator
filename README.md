@@ -10,6 +10,10 @@ The Carb Cycling Calculator is a webapp built with Flask that helps users manage
 - Display of personalized nutrition strategy on the profile page
 - Responsive design using Bootstrap for a better user experience
 
+## Preview of the final result
+<img width="1403" alt="Preview of WebApp" src="https://github.com/user-attachments/assets/c55a62a0-0f8f-4a5e-a9d0-23ac5eca47dd">
+
+
 ## Technologies Used
 - **Flask**: A lightweight WSGI web application framework for Python.
 - **SQLite**: A lightweight database for storing user data.
